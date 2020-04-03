@@ -6,14 +6,15 @@ api = Flask(__name__)
 
 @api.route('/api/<entity>', methods=['GET'])
 def response(entity):
-    content = {'Issue': 'there is an error'}
+    content = {'Message': api.config['content'] or "Error"}
     return content, api.config.get('code')
-
+   
 if __name__ == '__main__':
     parser = ArgumentParser()
-    parser.add_argument('-a')
-    args = parser.parse_args()
-    val = args.a
-    api.config['code'] = val    
+    parser.add_argument('-code')
+    parser.add_argument('-content')
+    args = parser.parse_args()    
+    api.config['code'] = args.code 
+    api.config['content'] = args.content
     api.run()
 
