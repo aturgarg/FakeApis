@@ -6,6 +6,7 @@ Usage
 
 Example:
 > python StatusGeneric.py -code 403
+
 > python StatusGeneric.py -code 403 -content "error in code"
->
+
 
